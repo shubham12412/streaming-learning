@@ -6,3 +6,7 @@
 
 3) https://stackoverflow.com/questions/12602368/sliding-vs-tumbling-windows
 
+4) https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101
+
+5) https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102
+
