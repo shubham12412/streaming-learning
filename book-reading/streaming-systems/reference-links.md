@@ -20,5 +20,6 @@
 
 11) https://databricks.com/blog/2015/01/28/introducing-streaming-k-means-in-spark-1-2.html
 
+12) https://beam.apache.org/
 
-12) 
+13) 
