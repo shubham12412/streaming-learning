@@ -8,4 +8,17 @@
 
 5) https://www.oreilly.com/ideas/questioning-the-lambda-architecture
 
+6) https://pkghosh.wordpress.com/2014/09/10/realtime-trending-analysis-with-approximate-algorithms/
 
+7) https://www.coursera.org/lecture/advanced-algorithms-and-complexity/heavy-hitters-problem-wCILS
+
+8) https://en.wikipedia.org/wiki/Streaming_algorithm
+
+9) https://github.com/pranab/hoidla
+
+10) https://github.com/pranab/sifarish
+
+11) https://databricks.com/blog/2015/01/28/introducing-streaming-k-means-in-spark-1-2.html
+
+
+12) 
