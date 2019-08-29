@@ -257,4 +257,49 @@ https://learning.oreilly.com/library/view/streaming-systems/9781491983867/assets
 ***As you can imagine, the modes in the order presented (discarding, accumulating, accumulating and retracting) are each successively more expensive in terms of storage and computation costs. To that end, choice of accumulation mode provides yet another dimension for making trade-offs along the axes of correctness, latency, and cost.***
 
 
+--------------------------------------------------------------------------------------------------------------------
+
+
+### Summary
+
+***Event time versus processing time***
+The all-important distinction between when events occurred and when they are observed by your data processing system.
+
+***Windowing***
+The commonly utilized approach to managing unbounded data by slicing it along temporal boundaries (in either processing time or event time, ***though we narrow the definition of windowing in the Beam Model to mean only within event time).***
+
+***Triggers***
+The declarative mechanism for specifying precisely when materialization of output makes sense for your particular use case.
+
+
+***Watermarks***
+The powerful notion of progress in event time that provides a means of reasoning about completeness (and thus missing data) in an out-of-order processing system operating on unbounded data.
+
+
+***Accumulation***
+The relationship between refinements of results for a single window for cases in which it’s materialized multiple times as it evolves
+
+
+***Second, the four questions we used to frame our exploration:
+
+1) What results are calculated? = ***transformations.
+
+2) Where in event time are results calculated? = ***windowing.
+
+3) When in processing time are results materialized? = ***triggers plus watermarks.
+
+4) How do refinements of results relate? = ***accumulation.
+
+
+
+Third, to drive home the flexibility afforded by this model of stream processing (because in the end, that’s really what this is all about: balancing competing tensions like correctness, latency, and cost), a recap of the major variations in output we were able to achieve over the same dataset with only a minimal amount of code change:
+
+.............. many example see ends of chapter
+
+All that said, at this point, we’ve really looked at only one type of windowing: fixed windowing in event time. As we know, there are a number of dimensions to windowing, and I’d like to touch upon at least two more of those before we call it day with the Beam Model. First, however, we’re going to take a slight detour to dive deeper into the world of watermarks, as this knowledge will help frame future discussions (and be fascinating in and of itself). Enter Slava, stage right...
+
+
+
+
+
 
