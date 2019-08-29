@@ -222,3 +222,39 @@ Two final side notes about lateness horizons:
 
 ### How: Accumulation
 
+When triggers are used to produce multiple panes for a single window over time, we find ourselves confronted with the last question: “How do refinements of results relate?” In the examples we’ve seen so far, each successive pane is built upon the one immediately preceding it. 
+
+However, there are actually three different modes of accumulation:
+
+1) ***Discarding***
+Every time a pane is materialized, any stored state is discarded. This means that each successive pane is independent from any that came before. Discarding mode is useful when the downstream consumer is performing some sort of accumulation itself; for example, when sending integers into a system that expects to receive deltas that it will sum together to produce a final count.
+
+2) ***Accumulating***
+As in Figures 2-6 through 2-11, every time a pane is materialized, any stored state is retained, and future inputs are accumulated into the existing state. This means that each successive pane builds upon the previous panes. Accumulating mode is useful when later results can simply overwrite previous results, such as when storing output in a key/value store like HBase or Bigtable.
+
+3) ***Accumulating and retracting***
+This is like accumulating mode, but when producing a new pane, it also produces independent retractions for the previous pane(s). Retractions (combined with the new accumulated result) are essentially an explicit way of saying “I previously told you the result was X, but I was wrong. Get rid of the X I told you last time, and replace it with Y.” 
+
+There are two cases for which retractions are particularly helpful:
+
+1) When consumers downstream are regrouping data by a different dimension, it’s entirely possible the new value may end up keyed differently from the previous value and thus end up in a different group. In that case, the new value can’t just overwrite the old value; you instead need the retraction to remove the old value
+
+2) When dynamic windows (e.g., sessions, which we look at more closely in a few moments) are in use, the new value might be replacing more than one previous window, due to window merging. In this case, it can be difficult to determine from the new window alone which old windows are being replaced. Having explicit retractions for the old windows makes the task straightforward.
+
+
+Discarding mode version of early/on-time/late firings
+
+https://learning.oreilly.com/library/view/streaming-systems/9781491983867/assets/stsy_0213.mp4
+
+
+Accumulating and retracting mode version of early/on-time/late firings
+
+https://learning.oreilly.com/library/view/streaming-systems/9781491983867/assets/stsy_0214.mp4
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+***As you can imagine, the modes in the order presented (discarding, accumulating, accumulating and retracting) are each successively more expensive in terms of storage and computation costs. To that end, choice of accumulation mode provides yet another dimension for making trade-offs along the axes of correctness, latency, and cost.***
+
+
+
