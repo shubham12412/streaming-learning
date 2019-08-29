@@ -1,7 +1,7 @@
 https://learning.oreilly.com/library/view/streaming-systems/9781491983867/ch03.html
 
 
-***Consider any pipeline that ingests data and outputs results continuously. We wish to solve the general problem of when it is safe to call an event-time window closed, meaning that the window does not expect any more data. To do so we would like to characterize the progress that the pipeline is making relative to its unbounded input.
+***Consider any pipeline that ingests data and outputs results continuously. We wish to solve the general problem of when it is safe to call an event-time window closed, meaning that the window does not expect any more data. To do so we would like to characterize the progress that the pipeline is making relative to its unbounded input.***
 
 One naive approach for solving the event-time windowing problem would be to simply base our event-time windows on the current processing time. As we saw in Chapter 1, we quickly run into trouble—data processing and transport is not instantaneous, so processing and event times are almost never equal. Any hiccup or spike in our pipeline might cause us to incorrectly assign messages to windows. Ultimately, this strategy fails because we have no robust way to make any guarantees about such windows.
 
@@ -13,9 +13,9 @@ Messages are ingested by the pipeline, processed, and eventually marked complete
 
 https://learning.oreilly.com/library/view/streaming-systems/9781491983867/assets/stsy_0301.mp4
 
-***There is a key point on this distribution, located at the leftmost edge of the “in-flight” distribution, corresponding to the oldest event timestamp of any unprocessed message of our pipeline. We use this value to define the watermark:
+***There is a key point on this distribution, located at the leftmost edge of the “in-flight” distribution, corresponding to the oldest event timestamp of any unprocessed message of our pipeline. We use this value to define the watermark:***
 
-***The watermark is a monotonically1 increasing timestamp of the oldest work not yet completed.
+***The watermark is a monotonically1 increasing timestamp of the oldest work not yet completed.***
 
 
 There are two fundamental properties that are provided by this definition that make it useful:
