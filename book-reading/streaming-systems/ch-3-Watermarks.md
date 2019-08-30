@@ -104,3 +104,5 @@ One grouping the data by team and computing per-team aggregates
 
 Watermarks are created at input sources, as discussed in the preceding section. They then conceptually flow through the system as data progress through it.3 You can track watermarks at varying levels of granularity. For pipelines comprising multiple distinct stages, each stage likely tracks its own watermark, whose value is a function of all the inputs and stages that come before it. Therefore, stages that come later in the pipeline will have watermarks that are further in the past (because they’ve seen less of the overall input).
 
+
+
